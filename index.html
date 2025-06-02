@@ -2,106 +2,342 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Key to Academic Success </title>
+  <title>The Key to Academic Success</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Unlock your full academic potential with this evidence-based manual for academic excellence. Download the PDF instantly.">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #5A7EFC; /* A vibrant blue */
+      --secondary-color: #FF6B6B; /* A complementary coral/red */
+      --dark-text: #2c3e50;
+      --light-text: #ecf0f1;
+      --background-light: #f4f7f6;
+      --card-background: #ffffff;
+      --border-color: #e0e0e0;
+      --shadow-light: rgba(0, 0, 0, 0.08);
+      --shadow-medium: rgba(0, 0, 0, 0.15);
+    }
+
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f5f7fb; color: #222;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-light);
+      color: var(--dark-text);
+      line-height: 1.6;
     }
+
+    /* --- Header --- */
     header {
-      background: #2d3a4b;
-      color: #fff;
-      padding: 2rem 1rem 1.5rem 1rem;
+      background: linear-gradient(135deg, var(--primary-color), #4a6ee6);
+      color: var(--light-text);
+      padding: 3rem 1.5rem 2rem 1.5rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow-medium);
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
+      opacity: 0.2;
+      animation: backgroundPan 30s linear infinite;
+    }
+
+    @keyframes backgroundPan {
+      from { background-position: 0 0; }
+      to { background-position: 100% 100%; }
+    }
+
     header h1 {
-      margin: 0 0 0.2em 0;
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 0.4em 0;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-size: 2.8em;
+      text-shadow: 2px 2px 5px var(--shadow-medium);
     }
+
     header .subtitle {
-      font-size: 1.1em;
-      color: #c0d3eb;
-      margin-bottom: 1.5em;
+      font-size: 1.2em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    header nav {
+      margin-top: 1.5em;
+    }
+
     header nav a {
-      color: #c0d3eb;
+      color: var(--light-text);
       text-decoration: none;
-      margin: 0 1.2em;
-      font-size: 1.05em;
-      transition: color 0.15s;
+      margin: 0 1.5em;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.2s ease;
+      position: relative;
+      padding-bottom: 5px;
     }
-    header nav a:hover { color: #fff; }
+
+    header nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease-out;
+    }
+
+    header nav a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    header nav a:hover::after {
+      width: 100%;
+    }
+
+    /* --- Main Content Area --- */
     main {
-      max-width: 700px;
-      margin: 2em auto;
-      background: #fff;
-      padding: 2.5em 2em 2em 2em;
-      border-radius: 1.2em;
-      box-shadow: 0 6px 24px rgba(44, 58, 71, 0.09);
+      max-width: 900px;
+      margin: 3em auto;
+      background: var(--card-background);
+      padding: 3.5em 3em;
+      border-radius: 1.5em;
+      box-shadow: 0 10px 40px var(--shadow-light);
+      position: relative;
+      z-index: 1;
     }
-    .section { margin-bottom: 2.5em; }
+
+    .section {
+      margin-bottom: 3.5em;
+      padding-bottom: 1.5em;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
     .section h2 {
-      color: #1a2a3a;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
       font-weight: 700;
-      font-size: 1.4em;
-      margin-bottom: 0.6em;
-      border-left: 4px solid #4a8fff;
-      padding-left: 0.4em;
-    }
-    ul.features {
-      margin-top: 1em;
+      font-size: 2.2em;
+      margin-bottom: 0.8em;
+      position: relative;
       padding-left: 1.2em;
     }
-    ul.features li {
-      margin: 0.3em 0;
+
+    .section h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 80%;
+      background: var(--secondary-color);
+      border-radius: 3px;
     }
-    ol { margin-left: 1.3em; }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    ul.features, ol {
+      margin-top: 1.5em;
+      padding-left: 1.8em;
+      list-style-type: disc;
+      color: var(--dark-text);
+    }
+
+    ul.features li, ol li {
+      margin: 0.8em 0;
+      line-height: 1.8;
+    }
+
+    ul.features li:last-child, ol li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- Blockquote/Preview --- */
     blockquote {
       background: #eaf2fa;
-      border-left: 4px solid #4a8fff;
-      margin: 1.2em 0;
-      padding: 1em 1.3em;
+      border-left: 6px solid var(--secondary-color);
+      margin: 2em 0;
+      padding: 1.5em 2em;
       font-style: italic;
-      color: #2d3a4b;
+      color: var(--dark-text);
+      border-radius: 0 10px 10px 0;
+      box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
     }
+
+    blockquote::before {
+      content: '“';
+      font-family: serif;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 4em;
+      color: rgba(0, 0, 0, 0.08);
+      z-index: 0;
+    }
+
+    blockquote p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+
+    /* --- Buy Section --- */
     .buy-section {
       text-align: center;
-      border: 2px dashed #d7eaff;
-      border-radius: 1em;
-      background: #f8fcff;
-      padding: 2em 1em 1em 1em;
+      background: linear-gradient(135deg, #e6f0ff, #f2f7ff);
+      border: 1px solid #d0eaff;
+      border-radius: 1.5em;
+      padding: 2.5em 2em;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      margin-top: 3em;
     }
+
+    .buy-section h2 {
+      color: var(--secondary-color);
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
     .price {
-      color: #2979ff;
+      color: var(--primary-color);
       font-weight: bold;
-      font-size: 1.12em;
+      font-size: 2.2em;
+      margin-top: 0.5em;
+      display: inline-block;
+      padding: 0.2em 0.5em;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
+
     #paypal-button-container {
-      margin: 1.5em 0;
+      margin: 2em 0;
       display: flex;
       justify-content: center;
     }
+
+    .buy-section small {
+      display: block;
+      margin-top: 1.5em;
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+
+    /* --- Contact Section --- */
     .contact-section a {
-      color: #377dff;
+      color: var(--primary-color);
       text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s ease;
     }
+
+    .contact-section a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* --- Footer --- */
     footer {
-      margin-top: 3em;
-      background: #2d3a4b;
-      color: #c0d3eb;
+      margin-top: 4em;
+      background: var(--primary-color);
+      color: var(--light-text);
       text-align: center;
-      padding: 1.2em 0 1em 0;
-      font-size: 0.97em;
-      border-radius: 0 0 1em 1em;
+      padding: 1.8em 0 1.5em 0;
+      font-size: 0.95em;
+      border-radius: 0 0 1.5em 1.5em;
+      box-shadow: 0 -4px 20px var(--shadow-medium);
     }
-    @media (max-width: 600px) {
-      main { padding: 1em 0.5em; }
-      header { padding: 1.3em 0.5em 1.2em 0.5em; }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 768px) {
+      header {
+        padding: 2.5rem 1rem 1.5rem 1rem;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+      header .subtitle {
+        font-size: 1em;
+      }
+      header nav a {
+        margin: 0 0.8em;
+        font-size: 1em;
+      }
+      main {
+        margin: 2em auto;
+        padding: 2em 1.5em;
+      }
+      .section h2 {
+        font-size: 1.8em;
+      }
+      blockquote {
+        padding: 1em 1.5em;
+      }
+      .price {
+        font-size: 1.8em;
+      }
+      footer {
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8em;
+      }
+      header nav a {
+        margin: 0.3em 0.5em;
+        font-size: 0.9em;
+      }
+      main {
+        padding: 1.5em 1em;
+        border-radius: 1em;
+      }
+      .section h2 {
+        font-size: 1.5em;
+        padding-left: 1em;
+      }
+      .section h2::before {
+        width: 4px;
+      }
+      ul.features, ol {
+        padding-left: 1.5em;
+      }
+      .buy-section {
+        padding: 1.5em 1em;
+      }
     }
   </style>
 </head>
@@ -112,6 +348,7 @@
     <nav>
       <a href="#about">About</a>
       <a href="#contents">Contents</a>
+      <a href="#preview">Preview</a>
       <a href="#buy">Buy PDF</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -120,14 +357,14 @@
     <section id="about" class="section">
       <h2>About the Guide</h2>
       <p>
-        <b>The Key to Academic Success</b> is a structured roadmap to academic achievement. 
+        <b>The Key to Academic Success</b> is a structured roadmap to academic achievement.
         Backed by educational psychology and the habits of top performers, this manual breaks down the science and strategies of learning, motivation, and planning — so you can reach your goals with confidence.
       </p>
       <ul class="features">
-        <li>Evidence-based learning techniques</li>
-        <li>Step-by-step productivity methods</li>
-        <li>Mindset and motivation tools</li>
-        <li>Well-being and sustainable success</li>
+        <li>📚 Evidence-based learning techniques</li>
+        <li>📈 Step-by-step productivity methods</li>
+        <li>🧠 Mindset and motivation tools</li>
+        <li>🌱 Well-being and sustainable success</li>
       </ul>
     </section>
     <section id="contents" class="section">
@@ -146,7 +383,9 @@
     <section id="preview" class="section">
       <h2>Preview</h2>
       <blockquote>
-        <b>“Academic success is not reserved for a select few. It is attainable through consistent application of proven strategies grounded in educational psychology and the habits of high-performing individuals...”</b>
+        <p>
+          <b>“Academic success is not reserved for a select few. It is attainable through consistent application of proven strategies grounded in educational psychology and the habits of high-performing individuals...”</b>
+        </p>
       </blockquote>
       <p>
         <em>From growth mindset to active recall, time management to well-being, this manual distills the latest research into practical steps you can implement today.</em>
@@ -159,9 +398,8 @@
         <br>
         Secure payment via PayPal. After purchase, you'll receive a link to download the PDF.
       </p>
-      <!-- PayPal Button Integration -->
       <div id="paypal-button-container">
-        <script 
+        <script
           src="https://www.paypal.com/sdk/js?client-id=BAAsQTUSxyP_rM08UJUccfw1jLWJVVc3UaYUbtTJoJjY2GD6B1T20SH5XQZCiME1yUxhscGFDFJbl1M11s&components=hosted-buttons&disable-funding=venmo&currency=USD">
         </script>
         <div id="paypal-hosted-button-id"></div>
@@ -178,7 +416,13 @@
         <em>After successful payment, you will be redirected to download, or receive the link by email. For any issues, contact us below.</em>
       </small>
     </section>
-    <section id="contact" class="section contact-section">      
+    <section id="contact" class="section contact-section">
+      <h2>Contact Us</h2>
+      <p>
+        Have questions or need support? Feel free to <a href="mailto:support@example.com">email us</a>. We're here to help you unlock your academic potential!
+      </p>
+    </section>
+  </main>
   <footer>
     <p>&copy; 2025 The Key to Academic Success. All rights reserved.</p>
   </footer>
