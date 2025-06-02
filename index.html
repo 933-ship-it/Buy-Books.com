@@ -5,9 +5,7 @@
   <title>The Key to Academic Success</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Unlock your full academic potential with this evidence-based manual for academic excellence. Download the PDF instantly.">
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts - Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* Custom CSS for smooth scrolling and general body styles */
@@ -214,20 +212,14 @@
         Secure payment via PayPal. After purchase, you'll instantly receive a link to download the PDF.
       </p>
 
-      <!-- PayPal Button Integration -->
-      <div id="paypal-button-container">
-        <script
-          src="https://www.paypal.com/sdk/js?client-id=BAAsQTUSxyP_rM08UJUccfw1jLWJVVc3UaYUbtTJoJjY2GD6B1T20SH5XQZCiME1yUxhscGFDFJbl1M11s&components=hosted-buttons&disable-funding=venmo&currency=USD">
-        </script>
+      <!-- New button to reveal PayPal -->
+      <button id="reveal-paypal-button" class="inline-block bg-white text-purple-700 hover:bg-purple-100 transition duration-300 ease-in-out font-bold py-3 px-8 rounded-full shadow-lg text-lg transform hover:scale-105 mb-8">
+        Proceed to Secure Payment
+      </button>
+
+      <!-- PayPal Button Integration (initially hidden) -->
+      <div id="paypal-button-container" class="hidden">
         <div id="paypal-hosted-button-id"></div>
-        <script>
-          // Replace 'YOUR_BUTTON_ID' with your real PayPal Hosted Button ID if you have one
-          if (window.paypal) {
-            paypal.HostedButtons({
-              hostedButtonId: "MYLHTKZFE2WXN"
-            }).render('#paypal-hosted-button-id');
-          }
-        </script>
       </div>
       <small class="block mt-6 text-sm opacity-70">
         <em>After successful payment, you will be redirected to download, or receive the link by email. For any issues, contact us below.</em>
@@ -258,7 +250,10 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Mobile Menu Toggle -->
+  <!-- PayPal SDK Script - Moved to end of body for better loading -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAsQTUSxyP_rM08UJUccfw1jLWJVVc3UaYUbtTJoJjY2GD6B1T20SH5XQZCiME1yUxhscGFDFJbl1M11s&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+  <!-- JavaScript for Mobile Menu Toggle and PayPal button rendering -->
   <script>
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
       const mobileMenu = document.getElementById('mobile-menu');
@@ -270,6 +265,39 @@
       link.addEventListener('click', function() {
         document.getElementById('mobile-menu').classList.add('hidden');
       });
+    });
+
+    // Flag to ensure PayPal button is rendered only once
+    let paypalButtonRendered = false;
+
+    // JavaScript for revealing PayPal button
+    document.addEventListener('DOMContentLoaded', function() {
+      const revealPaypalButton = document.getElementById('reveal-paypal-button');
+      const paypalContainer = document.getElementById('paypal-button-container');
+      const paypalHostedButtonId = document.getElementById('paypal-hosted-button-id');
+
+      if (revealPaypalButton && paypalContainer && paypalHostedButtonId) {
+        revealPaypalButton.addEventListener('click', function() {
+          paypalContainer.classList.remove('hidden');
+          // Optional: Scroll to the PayPal button for better UX
+          paypalContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Hide the reveal button after click to prevent multiple clicks
+          revealPaypalButton.classList.add('hidden');
+
+          // Render PayPal button only if it hasn't been rendered before
+          if (!paypalButtonRendered && window.paypal) {
+            try {
+              paypal.HostedButtons({
+                hostedButtonId: "MYLHTKZFE2WXN"
+              }).render('#paypal-hosted-button-id');
+              paypalButtonRendered = true; // Set flag to true after rendering
+            } catch (error) {
+              console.error("Error rendering PayPal button:", error);
+              // Optionally show a user-friendly message if rendering fails
+            }
+          }
+        });
+      }
     });
   </script>
 </body>
